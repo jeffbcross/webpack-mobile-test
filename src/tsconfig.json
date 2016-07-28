@@ -14,7 +14,8 @@
       "../node_modules/@types"
     ],
     "types": [
-      "jasmine"
+      "jasmine",
+      "../node_modules/angularfire2/firebase3.d.ts"
     ]
   }
 }

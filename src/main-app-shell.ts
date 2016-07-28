@@ -2,14 +2,15 @@ import 'angular2-universal-polyfills';
 import { provide } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { APP_SHELL_BUILD_PROVIDERS } from '@angular/app-shell';
-import { 
-  REQUEST_URL, 
-  ORIGIN_URL, 
-  Bootloader, 
-  BootloaderConfig, 
-  AppConfig 
+import {
+  REQUEST_URL,
+  ORIGIN_URL,
+  Bootloader,
+  BootloaderConfig,
+  AppConfig
 } from 'angular2-universal';
 import { AppComponent } from './app/';
+import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
 
 const bootloaderConfig: BootloaderConfig = {
   platformProviders: [
@@ -30,7 +31,14 @@ const appConfig: AppConfig = {
   ],
   providers: [
     // What URL should Angular be treating the app as if navigating
-    provide(REQUEST_URL, { useValue: '/' })
+    provide(REQUEST_URL, { useValue: '/' }),
+    FIREBASE_PROVIDERS,
+    defaultFirebase({
+      apiKey: "AIzaSyBVSy3YpkVGiKXbbxeK0qBnu3-MNZ9UIjA",
+      authDomain: "angularfire2-test.firebaseapp.com",
+      databaseURL: "https://angularfire2-test.firebaseio.com",
+      storageBucket: "angularfire2-test.appspot.com",
+    })
   ]
 }
 
